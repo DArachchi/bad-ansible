@@ -1,0 +1,9 @@
+- name: create directory for index.html
+  file:
+    path: /usr/share/tomcat/webapps/ansible
+    state: directory
+
+- name: copy static index.html to tomcat webapps/ansible/index.html
+  copy:
+    src: index.html.app1
+    dest: /usr/share/tomcat/webapps/ansible/index.html
