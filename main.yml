@@ -48,18 +48,11 @@
   roles:
     - configure_app2
 
-- name: deploy postgres
+- name: deploy postgres and apache
   hosts: apps
   gather_facts: false
   become: true
   hosts: appdbs
   roles:
     - deploy_postgres
-
-- name: deploy apache
-  hosts: apps
-  gather_facts: false
-  become: true
-  hosts: apps
-  roles:
     - deploy_apache
