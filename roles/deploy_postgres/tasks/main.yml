@@ -3,16 +3,19 @@
     name: postgresql-server
     state: latest
 
-- name: enable apache at boot
+- name: enable postgres at boot
   service:
     name: postgresql
     enabled: yes
 
-# only run the next 2 tasks once!
 - name: initilize postgres
   command: postgresql-setup initdb
+  args:
+    creates: /var/lib/pgsql/initdb.log
+
 - name: initilize postgres some more
   command: chkconfig postgresql on
+
 
 - name: start postgres
   service:
